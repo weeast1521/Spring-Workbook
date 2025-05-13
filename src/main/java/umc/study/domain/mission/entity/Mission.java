@@ -1,4 +1,4 @@
-package umc.study.domain;
+package umc.study.domain.mission.entity;
 
 import jakarta.persistence.*;
 import lombok.*;

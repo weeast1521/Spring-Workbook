@@ -3,7 +3,7 @@ package umc.study.domain.mapping;
 import jakarta.persistence.*;
 import lombok.*;
 import umc.study.domain.member.entity.Member;
-import umc.study.domain.Mission;
+import umc.study.domain.mission.entity.Mission;
 import umc.study.domain.common.BaseEntity;
 import umc.study.domain.mapping.enums.MissionStatus;
 

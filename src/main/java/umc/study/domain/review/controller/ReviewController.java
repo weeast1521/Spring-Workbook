@@ -7,10 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 import umc.study.apiPayload.ApiResponse;
 import umc.study.domain.review.dto.request.ReviewRequestDTO;
 import umc.study.domain.review.dto.response.ReviewResponseDTO;
-import umc.study.domain.review.repository.ReviewRepository;
 import umc.study.domain.review.service.command.ReviewCommandService;
-import umc.study.domain.store.dto.request.StoreRequestDTO;
-import umc.study.domain.store.dto.response.StoreResponseDTO;
 
 @RestController
 @RequiredArgsConstructor
