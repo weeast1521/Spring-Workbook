@@ -24,14 +24,14 @@ public class QMemberPrefer extends EntityPathBase<MemberPrefer> {
 
     public final umc.study.domain.common.QBaseEntity _super = new umc.study.domain.common.QBaseEntity(this);
 
-    public final umc.study.domain.QFoodCategory category;
-
     //inherited
     public final DateTimePath<java.time.LocalDateTime> createdAt = _super.createdAt;
 
+    public final umc.study.domain.foodCategory.entity.QFoodCategory foodCategory;
+
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
-    public final umc.study.domain.QMember member;
+    public final umc.study.domain.member.entity.QMember member;
 
     //inherited
     public final DateTimePath<java.time.LocalDateTime> updatedAt = _super.updatedAt;
@@ -54,8 +54,8 @@ public class QMemberPrefer extends EntityPathBase<MemberPrefer> {
 
     public QMemberPrefer(Class<? extends MemberPrefer> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.category = inits.isInitialized("category") ? new umc.study.domain.QFoodCategory(forProperty("category")) : null;
-        this.member = inits.isInitialized("member") ? new umc.study.domain.QMember(forProperty("member")) : null;
+        this.foodCategory = inits.isInitialized("foodCategory") ? new umc.study.domain.foodCategory.entity.QFoodCategory(forProperty("foodCategory")) : null;
+        this.member = inits.isInitialized("member") ? new umc.study.domain.member.entity.QMember(forProperty("member")) : null;
     }
 
 }

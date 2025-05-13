@@ -29,11 +29,11 @@ public class QMemberMission extends EntityPathBase<MemberMission> {
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
-    public final umc.study.domain.QMember member;
+    public final umc.study.domain.member.entity.QMember member;
 
     public final umc.study.domain.QMission mission;
 
-    public final EnumPath<umc.study.domain.enums.MissionStatus> status = createEnum("status", umc.study.domain.enums.MissionStatus.class);
+    public final EnumPath<umc.study.domain.mapping.enums.MissionStatus> status = createEnum("status", umc.study.domain.mapping.enums.MissionStatus.class);
 
     //inherited
     public final DateTimePath<java.time.LocalDateTime> updatedAt = _super.updatedAt;
@@ -56,7 +56,7 @@ public class QMemberMission extends EntityPathBase<MemberMission> {
 
     public QMemberMission(Class<? extends MemberMission> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.member = inits.isInitialized("member") ? new umc.study.domain.QMember(forProperty("member")) : null;
+        this.member = inits.isInitialized("member") ? new umc.study.domain.member.entity.QMember(forProperty("member")) : null;
         this.mission = inits.isInitialized("mission") ? new umc.study.domain.QMission(forProperty("mission"), inits.get("mission")) : null;
     }
 

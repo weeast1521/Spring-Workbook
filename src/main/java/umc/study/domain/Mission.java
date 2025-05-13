@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import umc.study.domain.common.BaseEntity;
 import umc.study.domain.mapping.MemberMission;
+import umc.study.domain.store.entity.Store;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

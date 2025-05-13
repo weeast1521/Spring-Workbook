@@ -1,7 +1,8 @@
-package umc.study.domain;
+package umc.study.domain.store.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import umc.study.domain.Region;
 import umc.study.domain.common.BaseEntity;
 
 @Entity
@@ -9,21 +10,19 @@ import umc.study.domain.common.BaseEntity;
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class Review extends BaseEntity {
+public class Store extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String title;
+    private String name;
 
-    private Float score;
+    private String address;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "member_id")
-    private Member member;
+    private Float Score;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "store_id")
-    private Store store;
+    @JoinColumn(name = "region_id")
+    private Region region;
 }

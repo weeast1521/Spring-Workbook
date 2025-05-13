@@ -1,4 +1,4 @@
-package umc.study.domain;
+package umc.study.domain.foodCategory.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

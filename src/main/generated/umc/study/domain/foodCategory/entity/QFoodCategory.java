@@ -1,4 +1,4 @@
-package umc.study.domain;
+package umc.study.domain.foodCategory.entity;
 
 import static com.querydsl.core.types.PathMetadataFactory.*;
 
@@ -15,7 +15,7 @@ import com.querydsl.core.types.Path;
 @Generated("com.querydsl.codegen.DefaultEntitySerializer")
 public class QFoodCategory extends EntityPathBase<FoodCategory> {
 
-    private static final long serialVersionUID = 839207294L;
+    private static final long serialVersionUID = -57060553L;
 
     public static final QFoodCategory foodCategory = new QFoodCategory("foodCategory");
 

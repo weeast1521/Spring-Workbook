@@ -29,7 +29,7 @@ public class QMemberAgree extends EntityPathBase<MemberAgree> {
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
-    public final umc.study.domain.QMember member;
+    public final umc.study.domain.member.entity.QMember member;
 
     public final umc.study.domain.QTerms terms;
 
@@ -54,7 +54,7 @@ public class QMemberAgree extends EntityPathBase<MemberAgree> {
 
     public QMemberAgree(Class<? extends MemberAgree> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.member = inits.isInitialized("member") ? new umc.study.domain.QMember(forProperty("member")) : null;
+        this.member = inits.isInitialized("member") ? new umc.study.domain.member.entity.QMember(forProperty("member")) : null;
         this.terms = inits.isInitialized("terms") ? new umc.study.domain.QTerms(forProperty("terms")) : null;
     }
 
