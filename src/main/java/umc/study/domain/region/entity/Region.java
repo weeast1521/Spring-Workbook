@@ -1,4 +1,4 @@
-package umc.study.domain;
+package umc.study.domain.region.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

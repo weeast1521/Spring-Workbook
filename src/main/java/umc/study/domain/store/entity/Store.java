@@ -2,7 +2,7 @@ package umc.study.domain.store.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import umc.study.domain.Region;
+import umc.study.domain.region.entity.Region;
 import umc.study.domain.common.BaseEntity;
 
 @Entity
