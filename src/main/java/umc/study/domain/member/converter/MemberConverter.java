@@ -5,9 +5,8 @@ import umc.study.domain.member.dto.request.MemberRequestDTO;
 import umc.study.domain.member.entity.Member;
 import umc.study.domain.member.dto.response.MemberResponseDTO;
 import umc.study.domain.member.enums.Gender;
+import umc.study.domain.mission.entity.Mission;
 import umc.study.domain.review.entity.Review;
-import umc.study.domain.store.converter.StoreConverter;
-import umc.study.domain.store.dto.response.StoreResponseDTO;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -48,17 +47,18 @@ public class MemberConverter {
                 .build();
     }
 
-    public static MemberResponseDTO.ReviewPreViewDTO myReviewPreViewDTO(Review review){
+    public static MemberResponseDTO.ReviewPreViewDTO toReviewPreViewDTO(Review review){
         return MemberResponseDTO.ReviewPreViewDTO.builder()
                 .ownerNickname(review.getMember().getName())
                 .score(review.getScore())
                 .createdAt(review.getCreatedAt().toLocalDate())
                 .build();
     }
-    public static MemberResponseDTO.ReviewPreViewListDTO myReviewPreViewListDTO(Page<Review> reviewList){
+
+    public static MemberResponseDTO.ReviewPreViewListDTO toReviewPreViewListDTO(Page<Review> reviewList){
 
         List<MemberResponseDTO.ReviewPreViewDTO> reviewPreViewDTOList = reviewList.stream()
-                .map(MemberConverter::myReviewPreViewDTO).collect(Collectors.toList());
+                .map(MemberConverter::toReviewPreViewDTO).collect(Collectors.toList());
 
         return MemberResponseDTO.ReviewPreViewListDTO.builder()
                 .isLast(reviewList.isLast())
@@ -67,6 +67,29 @@ public class MemberConverter {
                 .totalElements(reviewList.getTotalElements())
                 .listSize(reviewPreViewDTOList.size())
                 .reviewList(reviewPreViewDTOList)
+                .build();
+    }
+
+    public static MemberResponseDTO.MissionPreViewDTO toMissionPreViewDTO(Mission mission){
+        return MemberResponseDTO.MissionPreViewDTO.builder()
+                .reward(mission.getReward())
+                .storeName(mission.getStore().getName())
+                .missionSpec(mission.getMissionSpec())
+                .build();
+    }
+
+    public static MemberResponseDTO.MissionPreViewListDTO toMissionPreViewListDTO(Page<Mission> missionList){
+
+        List<MemberResponseDTO.MissionPreViewDTO> missionPreViewDTOList = missionList.stream()
+                .map(MemberConverter::toMissionPreViewDTO).collect(Collectors.toList());
+
+        return MemberResponseDTO.MissionPreViewListDTO.builder()
+                .isLast(missionList.isLast())
+                .isFirst(missionList.isFirst())
+                .totalPage(missionList.getTotalPages())
+                .totalElements(missionList.getTotalElements())
+                .listSize(missionPreViewDTOList.size())
+                .missionList(missionPreViewDTOList)
                 .build();
     }
 }

@@ -8,7 +8,6 @@ import com.querydsl.core.types.PathMetadata;
 import javax.annotation.processing.Generated;
 import com.querydsl.core.types.Path;
 import com.querydsl.core.types.dsl.PathInits;
-import umc.study.domain.review.entity.Review;
 
 
 /**
@@ -46,7 +45,7 @@ public class QMember extends EntityPathBase<Member> {
 
     public final NumberPath<Integer> point = createNumber("point", Integer.class);
 
-    public final ListPath<Review, umc.study.domain.QReview> reviewList = this.<Review, umc.study.domain.QReview>createList("reviewList", Review.class, umc.study.domain.QReview.class, PathInits.DIRECT2);
+    public final ListPath<umc.study.domain.review.entity.Review, umc.study.domain.review.entity.QReview> reviewList = this.<umc.study.domain.review.entity.Review, umc.study.domain.review.entity.QReview>createList("reviewList", umc.study.domain.review.entity.Review.class, umc.study.domain.review.entity.QReview.class, PathInits.DIRECT2);
 
     public final EnumPath<umc.study.domain.member.enums.SocialType> socialType = createEnum("socialType", umc.study.domain.member.enums.SocialType.class);
 

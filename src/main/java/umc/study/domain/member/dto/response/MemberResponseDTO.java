@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import umc.study.domain.store.dto.response.StoreResponseDTO;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -21,21 +20,51 @@ public class MemberResponseDTO {
         LocalDateTime createdAt;
     }
 
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
     @Builder
-    public record ReviewPreViewListDTO (
-            List<MemberResponseDTO.ReviewPreViewDTO> reviewList,
-            Integer listSize,
-            Integer totalPage,
-            Long totalElements,
-            Boolean isFirst,
-            Boolean isLast
-    ) {}
+    public static class ReviewPreViewListDTO {
+        private List<ReviewPreViewDTO> reviewList;
+        private Integer listSize;
+        private Integer totalPage;
+        private Long totalElements;
+        private Boolean isFirst;
+        private Boolean isLast;
+    }
 
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
     @Builder
-    public record ReviewPreViewDTO (
-            String ownerNickname,
-            Float score,
-            String body,
-            LocalDate createdAt
-    ) {}
+    public static class ReviewPreViewDTO {
+        private String ownerNickname;
+        private Float score;
+        private String body;
+        private LocalDate createdAt;
+    }
+
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    @Builder
+    public static class MissionPreViewListDTO {
+        private List<MissionPreViewDTO> missionList;
+        private Integer listSize;
+        private Integer totalPage;
+        private Long totalElements;
+        private Boolean isFirst;
+        private Boolean isLast;
+    }
+
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    @Builder
+    public static class MissionPreViewDTO {
+        private Integer reward;
+        private String storeName;
+        private String missionSpec;
+    }
+
 }

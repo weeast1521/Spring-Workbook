@@ -31,7 +31,7 @@ public class QMemberMission extends EntityPathBase<MemberMission> {
 
     public final umc.study.domain.member.entity.QMember member;
 
-    public final umc.study.domain.QMission mission;
+    public final umc.study.domain.mission.entity.QMission mission;
 
     public final EnumPath<umc.study.domain.mapping.enums.MissionStatus> status = createEnum("status", umc.study.domain.mapping.enums.MissionStatus.class);
 
@@ -57,7 +57,7 @@ public class QMemberMission extends EntityPathBase<MemberMission> {
     public QMemberMission(Class<? extends MemberMission> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
         this.member = inits.isInitialized("member") ? new umc.study.domain.member.entity.QMember(forProperty("member")) : null;
-        this.mission = inits.isInitialized("mission") ? new umc.study.domain.QMission(forProperty("mission"), inits.get("mission")) : null;
+        this.mission = inits.isInitialized("mission") ? new umc.study.domain.mission.entity.QMission(forProperty("mission"), inits.get("mission")) : null;
     }
 
 }

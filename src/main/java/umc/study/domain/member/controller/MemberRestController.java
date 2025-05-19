@@ -17,6 +17,8 @@ import umc.study.domain.member.dto.response.MemberResponseDTO;
 import umc.study.domain.member.entity.Member;
 import umc.study.domain.member.service.command.MemberCommandService;
 import umc.study.domain.member.service.query.MemberQueryService;
+import umc.study.domain.mission.entity.Mission;
+import umc.study.domain.mission.enums.Status;
 import umc.study.domain.review.entity.Review;
 import umc.study.domain.store.converter.StoreConverter;
 import umc.study.domain.store.dto.response.StoreResponseDTO;
@@ -57,6 +59,38 @@ public class MemberRestController {
             @RequestParam(name = "page") Integer page){
         Page<Review> reviewList = memberQueryService.getMyReviewList(memberId, page);
 
-        return ApiResponse.onSuccess(MemberConverter.myReviewPreViewListDTO(reviewList));
+        return ApiResponse.onSuccess(MemberConverter.toReviewPreViewListDTO(reviewList));
     }
+
+    @GetMapping("/{memberId}/missions")
+    @Operation(summary = "특정 멤버의 미션(진행 중) 목록 조회 API", description = "특정 멤버의 진행중인 미션들의 목록을 조회하는 API이며, 페이징을 포함합니다. query String 으로 page 번호를 주세요")
+    @ApiResponses({
+            @io.swagger.v3.oas.annotations.responses.
+                    ApiResponse(responseCode = "COMMON200", description = "OK, 성공"),
+            @io.swagger.v3.oas.annotations.responses.
+                    ApiResponse(responseCode = "AUTH003", description = "access 토큰을 주세요!",content = @Content(schema = @Schema(implementation = ApiResponse.class))),
+            @io.swagger.v3.oas.annotations.responses.
+                    ApiResponse(responseCode = "AUTH004", description = "acess 토큰 만료",content = @Content(schema = @Schema(implementation = ApiResponse.class))),
+            @io.swagger.v3.oas.annotations.responses.
+                    ApiResponse(responseCode = "AUTH006", description = "acess 토큰 모양이 이상함",content = @Content(schema = @Schema(implementation = ApiResponse.class))),
+    })
+    @Parameters({
+            @Parameter(name = "memberId", description = "멤버의 아이디, path variable 입니다!"),
+            @Parameter(name = "status", description = "미션 상태: progression, completed 등")
+    })
+    public ApiResponse<MemberResponseDTO.MissionPreViewListDTO> getMyProgressMissionList(
+            @ExistMember @PathVariable(name = "memberId") Long memberId,
+            @RequestParam(name = "page") Integer page,
+            @RequestParam(name = "status") String status){
+
+        Status missionStatus = Status.COMPLETE;
+
+        if (status == "progression") {
+            missionStatus = Status.PROGRESSION;
+        }
+        Page<Mission> missionList = memberQueryService.getMyProgressMissionList(memberId, page, missionStatus);
+
+        return ApiResponse.onSuccess(MemberConverter.toMissionPreViewListDTO(missionList));
+    }
+
 }

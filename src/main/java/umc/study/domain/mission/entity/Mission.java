@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import umc.study.domain.common.BaseEntity;
 import umc.study.domain.mapping.MemberMission;
+import umc.study.domain.mission.enums.Status;
 import umc.study.domain.store.entity.Store;
 
 import java.time.LocalDate;
@@ -26,6 +27,9 @@ public class Mission extends BaseEntity {
     private LocalDate deadline;
 
     private String missionSpec;
+
+    @Enumerated(EnumType.STRING)
+    private Status status;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "store_id")

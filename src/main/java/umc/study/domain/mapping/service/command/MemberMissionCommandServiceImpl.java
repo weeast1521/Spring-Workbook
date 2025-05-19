@@ -24,10 +24,10 @@ public class MemberMissionCommandServiceImpl implements MemberMissionCommandServ
 
     @Override
     public MemberMissionResponseDTO.toMemberMissionResponseDTO addProgressionMission(MemberMissionRequestDTO.toMemberMissionRequestDTO request) {
-        Member member = memberRepository.findById(request.memberId())
+        Member member = memberRepository.findById(request.getMemberId())
                 .orElseThrow();
 
-        Mission mission = missionRepository.findById(request.missionId())
+        Mission mission = missionRepository.findById(request.getMissionId())
                 .orElseThrow();
 
         MemberMission mm = MemberMission.builder()

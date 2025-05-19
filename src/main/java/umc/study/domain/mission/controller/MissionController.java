@@ -25,7 +25,4 @@ public class MissionController {
 
         return ApiResponse.onSuccess(mission);
     }
-
-    @PatchMapping("/missions/{missionId}")
-    public
 }

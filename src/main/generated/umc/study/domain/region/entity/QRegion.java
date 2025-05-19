@@ -1,4 +1,4 @@
-package umc.study.domain;
+package umc.study.domain.region.entity;
 
 import static com.querydsl.core.types.PathMetadataFactory.*;
 
@@ -7,7 +7,6 @@ import com.querydsl.core.types.dsl.*;
 import com.querydsl.core.types.PathMetadata;
 import javax.annotation.processing.Generated;
 import com.querydsl.core.types.Path;
-import umc.study.domain.region.entity.Region;
 
 
 /**
@@ -16,7 +15,7 @@ import umc.study.domain.region.entity.Region;
 @Generated("com.querydsl.codegen.DefaultEntitySerializer")
 public class QRegion extends EntityPathBase<Region> {
 
-    private static final long serialVersionUID = 686795382L;
+    private static final long serialVersionUID = 1907976679L;
 
     public static final QRegion region = new QRegion("region");
 

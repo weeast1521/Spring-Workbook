@@ -1,11 +1,8 @@
 package umc.study.domain.review.converter;
 
-import umc.study.domain.member.dto.response.MemberResponseDTO;
-import umc.study.domain.member.entity.Member;
 import umc.study.domain.review.dto.response.ReviewResponseDTO;
 import umc.study.domain.review.entity.Review;
 
-import java.time.LocalDateTime;
 
 public class ReviewConverter {
 

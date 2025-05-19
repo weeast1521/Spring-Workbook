@@ -11,9 +11,11 @@ import umc.study.apiPayload.exception.GeneralException;
 import umc.study.apiPayload.exception.InvalidPageException;
 import umc.study.domain.member.entity.Member;
 import umc.study.domain.member.repository.MemberRepository;
+import umc.study.domain.mission.entity.Mission;
+import umc.study.domain.mission.enums.Status;
+import umc.study.domain.mission.repository.MissionRepository;
 import umc.study.domain.review.entity.Review;
 import umc.study.domain.review.repository.ReviewRepository;
-import umc.study.domain.store.entity.Store;
 
 @Service
 @RequiredArgsConstructor
@@ -22,6 +24,7 @@ public class MemberQueryServiceImpl implements MemberQueryService {
 
     private final MemberRepository memberRepository;
     private final ReviewRepository reviewRepository;
+    private final MissionRepository missionRepository;
 
     @Override
     public Page<Review> getMyReviewList(Long memberId, Integer page) {
@@ -36,4 +39,19 @@ public class MemberQueryServiceImpl implements MemberQueryService {
         Pageable pageable = PageRequest.of(page - 1, 10);  // page = 1 → 내부는 0
         return reviewRepository.findAllByMember(member, pageable);
     }
+
+    @Override
+    public Page<Mission> getMyProgressMissionList(Long memberId, Integer page, Status status) {
+
+        if (page < 1) {
+            throw new InvalidPageException("page 값은 1 이상이어야 합니다.");
+        }
+
+        Member member = memberRepository.findById(memberId)
+                .orElseThrow(() -> new GeneralException(ErrorStatus._NOT_FOUND));
+
+        Pageable pageable = PageRequest.of(page - 1, 10);  // page = 1 → 내부는 0
+        return missionRepository.findByMemberAndStatus(member, status, pageable);
+    }
+
 }

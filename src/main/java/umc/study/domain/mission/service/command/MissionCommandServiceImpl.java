@@ -27,13 +27,13 @@ public class MissionCommandServiceImpl implements MissionCommandService {
 
     @Override
     public MissionResponseDTO.toCreateMissionResponseDTO createMission(MissionRequestDTO.toCreateMissionRequestDTO request) {
-        Store store = storeRepository.findById(request.storeId())
+        Store store = storeRepository.findById(request.getStoreId())
                 .orElseThrow(() -> new IllegalArgumentException("Store not found"));
 
         Mission mission = Mission.builder()
-                .reward(request.reward())
-                .deadline(request.deadline())
-                .missionSpec(request.missionSpec())
+                .reward(request.getReward())
+                .deadline(request.getDeadline())
+                .missionSpec(request.getMissionSpec())
                 .store(store)
                 .build();
 

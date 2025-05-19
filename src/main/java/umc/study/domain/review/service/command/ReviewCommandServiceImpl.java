@@ -25,15 +25,15 @@ public class ReviewCommandServiceImpl implements ReviewCommandService {
     @Override
     public ReviewResponseDTO.toReviewRequestDTO createReview(ReviewRequestDTO.toReviewRequestDTO request) {
 
-        Store store = storeRepository.findById(request.store().getId())
+        Store store = storeRepository.findById(request.getStore().getId())
                 .orElseThrow(() -> new IllegalArgumentException("Store not found"));
 
-        Member member = memberRepository.findById(request.member().getId())
+        Member member = memberRepository.findById(request.getMember().getId())
                 .orElseThrow(() -> new IllegalArgumentException("Member not found"));
 
         Review review = Review.builder()
-                .title(request.title())
-                .score(request.score())
+                .title(request.getTitle())
+                .score(request.getScore())
                 .member(member)
                 .store(store)
                 .build();

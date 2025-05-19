@@ -1,4 +1,4 @@
-package umc.study.domain;
+package umc.study.domain.mission.entity;
 
 import static com.querydsl.core.types.PathMetadataFactory.*;
 
@@ -8,7 +8,6 @@ import com.querydsl.core.types.PathMetadata;
 import javax.annotation.processing.Generated;
 import com.querydsl.core.types.Path;
 import com.querydsl.core.types.dsl.PathInits;
-import umc.study.domain.mission.entity.Mission;
 
 
 /**
@@ -17,7 +16,7 @@ import umc.study.domain.mission.entity.Mission;
 @Generated("com.querydsl.codegen.DefaultEntitySerializer")
 public class QMission extends EntityPathBase<Mission> {
 
-    private static final long serialVersionUID = -200839606L;
+    private static final long serialVersionUID = -1360799131L;
 
     private static final PathInits INITS = PathInits.DIRECT2;
 
@@ -38,7 +37,9 @@ public class QMission extends EntityPathBase<Mission> {
 
     public final NumberPath<Integer> reward = createNumber("reward", Integer.class);
 
-    public final QStore store;
+    public final EnumPath<umc.study.domain.mission.enums.Status> status = createEnum("status", umc.study.domain.mission.enums.Status.class);
+
+    public final umc.study.domain.store.entity.QStore store;
 
     //inherited
     public final DateTimePath<java.time.LocalDateTime> updatedAt = _super.updatedAt;
@@ -61,7 +62,7 @@ public class QMission extends EntityPathBase<Mission> {
 
     public QMission(Class<? extends Mission> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.store = inits.isInitialized("store") ? new QStore(forProperty("store"), inits.get("store")) : null;
+        this.store = inits.isInitialized("store") ? new umc.study.domain.store.entity.QStore(forProperty("store"), inits.get("store")) : null;
     }
 
 }

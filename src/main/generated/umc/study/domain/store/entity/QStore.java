@@ -1,4 +1,4 @@
-package umc.study.domain;
+package umc.study.domain.store.entity;
 
 import static com.querydsl.core.types.PathMetadataFactory.*;
 
@@ -8,7 +8,6 @@ import com.querydsl.core.types.PathMetadata;
 import javax.annotation.processing.Generated;
 import com.querydsl.core.types.Path;
 import com.querydsl.core.types.dsl.PathInits;
-import umc.study.domain.store.entity.Store;
 
 
 /**
@@ -17,7 +16,7 @@ import umc.study.domain.store.entity.Store;
 @Generated("com.querydsl.codegen.DefaultEntitySerializer")
 public class QStore extends EntityPathBase<Store> {
 
-    private static final long serialVersionUID = 1963195679L;
+    private static final long serialVersionUID = -359194811L;
 
     private static final PathInits INITS = PathInits.DIRECT2;
 
@@ -34,7 +33,7 @@ public class QStore extends EntityPathBase<Store> {
 
     public final StringPath name = createString("name");
 
-    public final QRegion region;
+    public final umc.study.domain.region.entity.QRegion region;
 
     public final NumberPath<Float> Score = createNumber("Score", Float.class);
 
@@ -59,7 +58,7 @@ public class QStore extends EntityPathBase<Store> {
 
     public QStore(Class<? extends Store> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.region = inits.isInitialized("region") ? new QRegion(forProperty("region")) : null;
+        this.region = inits.isInitialized("region") ? new umc.study.domain.region.entity.QRegion(forProperty("region")) : null;
     }
 
 }

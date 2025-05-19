@@ -1,4 +1,4 @@
-package umc.study.domain;
+package umc.study.domain.review.entity;
 
 import static com.querydsl.core.types.PathMetadataFactory.*;
 
@@ -8,7 +8,6 @@ import com.querydsl.core.types.PathMetadata;
 import javax.annotation.processing.Generated;
 import com.querydsl.core.types.Path;
 import com.querydsl.core.types.dsl.PathInits;
-import umc.study.domain.review.entity.Review;
 
 
 /**
@@ -17,7 +16,7 @@ import umc.study.domain.review.entity.Review;
 @Generated("com.querydsl.codegen.DefaultEntitySerializer")
 public class QReview extends EntityPathBase<Review> {
 
-    private static final long serialVersionUID = 687241946L;
+    private static final long serialVersionUID = 1330678703L;
 
     private static final PathInits INITS = PathInits.DIRECT2;
 
@@ -34,7 +33,7 @@ public class QReview extends EntityPathBase<Review> {
 
     public final NumberPath<Float> score = createNumber("score", Float.class);
 
-    public final QStore store;
+    public final umc.study.domain.store.entity.QStore store;
 
     public final StringPath title = createString("title");
 
@@ -60,7 +59,7 @@ public class QReview extends EntityPathBase<Review> {
     public QReview(Class<? extends Review> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
         this.member = inits.isInitialized("member") ? new umc.study.domain.member.entity.QMember(forProperty("member")) : null;
-        this.store = inits.isInitialized("store") ? new QStore(forProperty("store"), inits.get("store")) : null;
+        this.store = inits.isInitialized("store") ? new umc.study.domain.store.entity.QStore(forProperty("store"), inits.get("store")) : null;
     }
 
 }
