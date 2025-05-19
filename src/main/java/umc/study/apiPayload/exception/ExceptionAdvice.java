@@ -26,7 +26,6 @@ import java.util.Optional;
 @RestControllerAdvice(annotations = {RestController.class})
 public class ExceptionAdvice extends ResponseEntityExceptionHandler {
 
-
     @ExceptionHandler
     public ResponseEntity<Object> validation(ConstraintViolationException e, WebRequest request) {
         String errorMessage = e.getConstraintViolations().stream()
@@ -78,6 +77,18 @@ public class ExceptionAdvice extends ResponseEntityExceptionHandler {
                 headers,
                 reason.getHttpStatus(),
                 webRequest
+        );
+    }
+
+    @ExceptionHandler(InvalidPageException.class)
+    public ResponseEntity<Object> handleInvalidPage(InvalidPageException e, WebRequest request) {
+        return handleExceptionInternalFalse(
+                e,
+                ErrorStatus._BAD_REQUEST,
+                HttpHeaders.EMPTY,
+                ErrorStatus._BAD_REQUEST.getHttpStatus(),
+                request,
+                e.getMessage()
         );
     }
 
