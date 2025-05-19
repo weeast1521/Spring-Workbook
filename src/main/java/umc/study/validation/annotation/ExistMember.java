@@ -2,7 +2,7 @@ package umc.study.validation.annotation;
 
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
-import umc.study.validation.validator.StoreExistValidator;
+import umc.study.validation.validator.MemberExistValidator;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -11,9 +11,9 @@ import java.lang.annotation.Target;
 
 @Target({ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = StoreExistValidator.class)
-public @interface ExistStore {
-    String message() default "존재하지 않는 가게입니다.";
+@Constraint(validatedBy = MemberExistValidator.class)
+public @interface ExistMember {
+    String message() default "존재하지 않는 멤버입니다.";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }
